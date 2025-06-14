@@ -50,9 +50,32 @@ export const loginUser = async (req, res) => {
 const { email, password } = req.body;
   try {
 
- res.json({
+
+
+
+
+    if( !email || !password){
+      return res.json({
+        success: false,
+        message: "please enter all field",
+
+      })
+    }
+      const user=await prisma.user.findUnique({
+        where:{
+          email
+        }
+      })
+    if (!user)
+      return res.json({
+        success: false,
+        message: "User doesn't exists! Please register first",
+      });
+
+      res.json({
       success: true,
       email, password,
+      user,
       // user: {
       //   id: user.id,
       //   name: user.name,
@@ -60,27 +83,6 @@ const { email, password } = req.body;
       // },
       message:"working",
     });
-
-
-
-
-    // if( !email || !password){
-    //   return res.json({
-    //     success: false,
-    //     message: "please enter all field",
-
-    //   })
-    // }
-    //   const user=await prisma.user.findUnique({
-    //     where:{
-    //       email
-    //     }
-    //   })
-    // if (!user)
-    //   return res.json({
-    //     success: false,
-    //     message: "User doesn't exists! Please register first",
-    //   });
 
     // const checkPasswordMatch = await bcrypt.compare(
     //   password,
