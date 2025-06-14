@@ -3,6 +3,9 @@ import prisma from "../db/db.config.js";
 
 export const isAuth = async (req, res, next) => {
   try {
+    res.json({
+      message: "You are in work",
+    })
     const token = req.cookies.token;
     if (!token) {
       return res.status(401).json({
