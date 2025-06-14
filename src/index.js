@@ -15,7 +15,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
-// app.use(cookieParser());
+app.use(cookieParser());
 // app.listen(process.env.PORT, () => {
 
 //   console.log(`Server is starting on http://localhost:${process.env.PORT}`);
