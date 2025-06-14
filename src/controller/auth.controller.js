@@ -68,44 +68,32 @@ const { email, password } = req.body;
         }
       })
 
-      res.json({
-      success: true,
-      email, password,
-  
-      // user: {
-      //   id: user.id,
-      //   name: user.name,
-      //   email: user.email,
-      // },
-      message:"working",
-    });
+      
     if (!user)
       return res.json({
         success: false,
         message: "User doesn't exists! Please register first",
       });
 
+      
+
+    const checkPasswordMatch = await bcrypt.compare(
+      password,
+      user.password
+    );
+    if (!checkPasswordMatch)
+      return res.json({
+        success: false,
+        message: "Incorrect password! Please try again",
+      });
+
       res.json({
       success: true,
       email, password,
       user,
-      // user: {
-      //   id: user.id,
-      //   name: user.name,
-      //   email: user.email,
-      // },
+    
       message:"working",
     });
-
-    // const checkPasswordMatch = await bcrypt.compare(
-    //   password,
-    //   user.password
-    // );
-    // if (!checkPasswordMatch)
-    //   return res.json({
-    //     success: false,
-    //     message: "Incorrect password! Please try again",
-    //   });
       // sendCookie(user, res, "login successfully", 202);
       
   } catch (e) {
