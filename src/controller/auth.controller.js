@@ -87,14 +87,8 @@ const { email, password } = req.body;
         message: "Incorrect password! Please try again",
       });
 
-      res.json({
-      success: true,
-      email, password,
-      user,
-    
-      message:"working",
-    });
-      // sendCookie(user, res, "login successfully", 202);
+      
+      sendCookie(user, res, "login successfully", 202);
       
   } catch (e) {
     console.log(e);
