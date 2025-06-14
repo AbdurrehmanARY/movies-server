@@ -52,6 +52,7 @@ const { email, password } = req.body;
 
  res.json({
       success: true,
+      email, password,
       // user: {
       //   id: user.id,
       //   name: user.name,
