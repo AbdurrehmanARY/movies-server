@@ -31,3 +31,5 @@ app.get('/', (req,res) => {
   
 res.send('working fine')
 });
+
+export default app;
