@@ -49,34 +49,49 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {  
 const { email, password } = req.body;
   try {
-    if( !email || !password){
-      return res.json({
-        success: false,
-        message: "please enter all field",
 
-      })
-    }
-      const user=await prisma.user.findUnique({
-        where:{
-          email
-        }
-      })
-    if (!user)
-      return res.json({
-        success: false,
-        message: "User doesn't exists! Please register first",
-      });
+ res.json({
+      success: true,
+      // user: {
+      //   id: user.id,
+      //   name: user.name,
+      //   email: user.email,
+      // },
+      message:"working",
+    });
 
-    const checkPasswordMatch = await bcrypt.compare(
-      password,
-      user.password
-    );
-    if (!checkPasswordMatch)
-      return res.json({
-        success: false,
-        message: "Incorrect password! Please try again",
-      });
-      sendCookie(user, res, "login successfully", 202);
+
+
+
+    // if( !email || !password){
+    //   return res.json({
+    //     success: false,
+    //     message: "please enter all field",
+
+    //   })
+    // }
+    //   const user=await prisma.user.findUnique({
+    //     where:{
+    //       email
+    //     }
+    //   })
+    // if (!user)
+    //   return res.json({
+    //     success: false,
+    //     message: "User doesn't exists! Please register first",
+    //   });
+
+    // const checkPasswordMatch = await bcrypt.compare(
+    //   password,
+    //   user.password
+    // );
+    // if (!checkPasswordMatch)
+    //   return res.json({
+    //     success: false,
+    //     message: "Incorrect password! Please try again",
+    //   });
+      // sendCookie(user, res, "login successfully", 202);
+      
   } catch (e) {
     console.log(e);
     res.status(500).json({
