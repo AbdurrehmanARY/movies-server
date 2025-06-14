@@ -77,6 +77,18 @@ const { email, password } = req.body;
           email
         }
       })
+
+      res.json({
+      success: true,
+      email, password,
+  
+      // user: {
+      //   id: user.id,
+      //   name: user.name,
+      //   email: user.email,
+      // },
+      message:"working",
+    });
     if (!user)
       return res.json({
         success: false,
