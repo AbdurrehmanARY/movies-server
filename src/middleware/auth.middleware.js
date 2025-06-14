@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-// import prisma from "../db/db.config.js";
 import prisma from "../db/db.config.js";
 
 export const isAuth = async (req, res, next) => {
