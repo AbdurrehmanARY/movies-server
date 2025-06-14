@@ -5,10 +5,7 @@ export const isAuth = async (req, res, next) => {
   try {
    
     const token = req.cookies.token;
-     res.json({
-      message: "You are in work",
-      token
-    })
+     
     if (!token) {
       return res.status(401).json({
         success: false,
