@@ -61,17 +61,7 @@ const { email, password } = req.body;
 
       })
     }
-    res.json({
-      success: true,
-      email, password,
-  
-      // user: {
-      //   id: user.id,
-      //   name: user.name,
-      //   email: user.email,
-      // },
-      message:"working",
-    });
+    
       const user=await prisma.user.findUnique({
         where:{
           email
