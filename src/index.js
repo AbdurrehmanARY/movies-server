@@ -5,9 +5,8 @@ import express from "express";
 const app = express()
 dotenv.config()
 const corsOptions = {
-  // origin: process.env.FRONTEND_URL, // Allow only this origin
-  origin: process.env.FRONTEND_URL, // Allow only this origin
- 
+  origin: "https://movies-client-tau.vercel.app", 
+  
   credentials: true, // Allow cookies and credentials
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
